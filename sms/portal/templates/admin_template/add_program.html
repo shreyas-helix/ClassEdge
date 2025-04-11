@@ -1,0 +1,73 @@
+{% extends "admin_template/base.html" %}
+{% block page_title %} 
+Add Program 
+{% endblock page_title %}
+{% block main_content %}
+
+<!-- Begin Page Content -->
+<section class="content">
+    <div class="container-fluid">
+        <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="card shadow mb-5"> 
+                    <div class="card card-primary pb-2">
+                        <div class="card-header">
+                        <h3 class="card-title text-center">Program Details</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form" action="/save_program" method="post">
+                        {% csrf_token %}
+
+                        {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                        <div class="card-body">
+                            <div class="form-group">
+                            <label>Program</label>
+                            <input type="text" class="form-control" name="program_name" placeholder="Enter program">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                            
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                       
+                        </form>
+                    </div>
+                  </div>
+                  <!-- /.card -->
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+          </section>
+    </div>
+</section>
+<!-- /.container-fluid -->
+{% endblock main_content %}

@@ -1,0 +1,29 @@
+{% extends "staff_template/base.html" %}
+
+{% block page_title %} 
+Staff Home 
+{% endblock page_title %}
+
+{% block main_content %}
+<!-- Begin Page Content -->
+
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header">
+            <h5 class="text-primary">Staff Profile</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ teacher.teacher_name }}</p>
+            <p><strong>Subjects Assigned:</strong></p>
+            <ul>
+                {% for subject in subject_list %}
+                    <li>{{ subject.subject_name }} ({{ subject.program_id.program_name }})</li>
+                {% empty %}
+                    <li>No subjects assigned.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock main_content %}

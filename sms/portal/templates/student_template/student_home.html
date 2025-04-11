@@ -1,0 +1,37 @@
+{% extends "student_template/base.html" %}
+
+{% block page_title %} 
+Student Home 
+{% endblock page_title %}
+
+{% block main_content %}
+<!-- Begin Page Content -->
+
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header">
+            <h5 class="text-primary">Staff Profile</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Email:</strong> {{ student.email }}</p>
+            <p><strong>Program:</strong> {{ student.program_id.program_name }}</p>
+            <hr>
+            <h5 class="text-dark">Attendance</h5>
+            <ul>
+                {% for subject in subject_attendance %}
+                    <li>
+                        {{ subject.subject_name }} ({{ subject.program_name }}) 
+                        <strong>Present:</strong> {{ subject.present }}, 
+                        <strong>Absent:</strong> {{ subject.absent }}
+                    </li>
+                {% empty %}
+                    <li>No subjects found for your program.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock main_content %}
